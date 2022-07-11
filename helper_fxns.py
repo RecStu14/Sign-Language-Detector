@@ -1,5 +1,5 @@
 #HELPER FUNCTIONS
-import os
+import os, shutil
 
 #deleting all the .jpg files 
 def delete_jpg(path):
@@ -26,7 +26,7 @@ def create_folders(path):
 
     print('Successfully created',counter,'folders!')
 
-#sounts the number of .jpg images in the folder
+#counts the number of .jpg images in the folder
 def count_jpg(path):
     contents = os.listdir(path)
     counter = 0
@@ -37,8 +37,29 @@ def count_jpg(path):
 
     print('There are a total of',counter,'JPG Images in this folder!')
 
+count_jpg('/Users/sankeerthana/Documents/sign_lang_detector/American Sign Language Letters/valid')
 
 
+##to move the images into their labelled folders in order to use ImageDataGenerator.
+def moving_imgs(path):
+    #getting the contents of the folder
+    contents = os.listdir(path)
 
+    #removing the annotations.json from the list
+    contents.remove('_annotations.coco.json')
+    counter = 0 
+
+    for file in contents:
+        label = file[0]
+
+        if file[-4:] == '.jpg':
+            source = os.path.join(path, file)
+            destination = os.path.join(path,label,file)
+            shutil.move(source,destination)
+            counter += 1
+        else:
+            pass
+
+    print('Successfully moved',counter,'Images into their respective folders!')
     
 
