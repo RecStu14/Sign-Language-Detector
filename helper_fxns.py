@@ -11,7 +11,7 @@ def delete_jpg(path):
             os.remove(img)
             counter += 1
 
-    print('Successfully deleted ',counter,'JPG Images!')
+    print('Successfully deleted',counter,'JPG Images!')
 
 #to create folders which work as labels in the classifier in train, test and valid folders
 def create_folders(path):
