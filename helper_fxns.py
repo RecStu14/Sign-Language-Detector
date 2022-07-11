@@ -12,6 +12,7 @@ def delete_jpg(path):
             counter += 1
 
     print('Successfully deleted',counter,'JPG Images!')
+    
 
 #to create folders which work as labels in the classifier in train, test and valid folders
 def create_folders(path):
@@ -36,9 +37,7 @@ def count_jpg(path):
             counter += 1
 
     print('There are a total of',counter,'JPG Images in this folder!')
-
-count_jpg('/Users/sankeerthana/Documents/sign_lang_detector/American Sign Language Letters/valid')
-
+    
 
 #to move the images into their labelled folders in order to use ImageDataGenerator.
 def moving_imgs(path):
