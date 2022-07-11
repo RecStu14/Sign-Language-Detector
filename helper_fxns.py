@@ -40,7 +40,7 @@ def count_jpg(path):
 count_jpg('/Users/sankeerthana/Documents/sign_lang_detector/American Sign Language Letters/valid')
 
 
-##to move the images into their labelled folders in order to use ImageDataGenerator.
+#to move the images into their labelled folders in order to use ImageDataGenerator.
 def moving_imgs(path):
     #getting the contents of the folder
     contents = os.listdir(path)
