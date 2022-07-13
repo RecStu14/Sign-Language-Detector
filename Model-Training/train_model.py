@@ -11,6 +11,7 @@ from tensorflow.keras import Input
 from tensorflow.keras import Model
 import PATHS as PATHS
 import json
+import os
 
 
 #LOADING THE DATA
@@ -57,10 +58,12 @@ for layers in model.layers[:-5]:
 #getting the summary of the model
 model.summary()
 
+#Navigating to the correct directory
+os.chdir('/Users/sankeerthana/Documents/GitHub/Sign-Language-Detector/Model-Training/try2')
 
 #COMPILING AND FITTING THE MODEL
 epochs = 20 
-optimizer = Adam(learning_rate = 0.001)
+optimizer = Adam(learning_rate = 0.0001)
 model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['categorical_accuracy'])
 
 check_point = ModelCheckpoint(filepath='weights-improvement-{epoch:02d}-{val_categorical_accuracy:.3f}.h5',
