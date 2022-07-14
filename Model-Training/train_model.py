@@ -75,8 +75,7 @@ history = model.fit(train_gen, validation_data=valid_gen, epochs=epochs, callbac
 #saving the model
 model.save('mobilenetv2_sign_lang.h5')
 
-#saving architecture
-json_string = model.to_json()
-out_file = open("architecture.json", "w") 
-json.dump(json_string, out_file, indent = 6) 
-out_file.close()
+#saving the history variable into a text file
+f = open("history_si_stft.txt","w")
+f.write(str(history.history))
+f.close()
