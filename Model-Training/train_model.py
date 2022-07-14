@@ -58,12 +58,14 @@ for layers in model.layers[:-5]:
 #getting the summary of the model
 model.summary()
 
+print(os.getcwd())
+
 #Navigating to the correct directory
-os.chdir('/Users/sankeerthana/Documents/GitHub/Sign-Language-Detector/Model-Training/try2')
+os.chdir('/Users/sankeerthana/Documents/GitHub/Sign-Language-Recognition/Model-Training/try1-overfitting')
 
 #COMPILING AND FITTING THE MODEL
 epochs = 20 
-optimizer = Adam(learning_rate = 0.0001)
+optimizer = Adam()
 model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['categorical_accuracy'])
 
 check_point = ModelCheckpoint(filepath='weights-improvement-{epoch:02d}-{val_categorical_accuracy:.3f}.h5',
@@ -76,6 +78,6 @@ history = model.fit(train_gen, validation_data=valid_gen, epochs=epochs, callbac
 model.save('mobilenetv2_sign_lang.h5')
 
 #saving the history variable into a text file
-f = open("history_si_stft.txt","w")
+f = open("training_history.txt","w")
 f.write(str(history.history))
 f.close()
