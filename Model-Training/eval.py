@@ -28,7 +28,7 @@ test_labels = test_gen.classes
 model = load_model('/Users/sankeerthana/Documents/GitHub/Sign-Language-Recognition/Model-Training/try1-overfitting/mobilenetv2_sign_lang.h5')
 
 #Getting the Score
-score = model.evaluate(valid_gen)
+score = model.evaluate(test_gen)
 loss = score[0]
 accuracy = score[1] * 100 
 
@@ -52,7 +52,7 @@ training_accuracy = saved_history['categorical_accuracy']
 val_accuracy = saved_history['val_categorical_accuracy']
 
 #Range of the x axis in the plot
-epochs = range(1,(20 + 1))
+epochs = range(1,(21))
 
 
 #Plotting the Loss Curves
