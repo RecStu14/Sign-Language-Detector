@@ -13,3 +13,4 @@ TEST = "/Users/sankeerthana/Documents/GitHub/Sign-Language-Recognition/American-
 #MODEL TRAINING DIRECTORY
 MODEL_TRAINING = os.path.join(ROOT_DIR,'Model-Training')
 TRY1 = os.path.join(MODEL_TRAINING, 'try1-overfitting')
+TRY2 = os.pth.join(MODEL_TRAINING, 'try2')
