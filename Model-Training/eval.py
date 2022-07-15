@@ -28,7 +28,7 @@ test_labels = test_gen.classes
 model = load_model('/Users/sankeerthana/Documents/GitHub/Sign-Language-Recognition/Model-Training/try1-overfitting/mobilenetv2_sign_lang.h5')
 
 #Getting the Score
-score = model.evaluate(test_gen)
+score = model.evaluate(valid_gen)
 loss = score[0]
 accuracy = score[1] * 100 
 
@@ -44,9 +44,6 @@ with open('/Users/sankeerthana/Documents/GitHub/Sign-Language-Recognition/Model-
 #Evaluating the string of data and returning as a list
 saved_history = ast.literal_eval(data)
 
-#Getting the number of epochs
-num_epochs = len(saved_history)
-
 #Allocating variables to the loss and accuracy values
 training_loss = saved_history['loss']
 val_loss = saved_history['val_loss']
@@ -55,7 +52,8 @@ training_accuracy = saved_history['categorical_accuracy']
 val_accuracy = saved_history['val_categorical_accuracy']
 
 #Range of the x axis in the plot
-epochs = range(1,(num_epochs + 1))
+epochs = range(1,(20 + 1))
+
 
 #Plotting the Loss Curves
 plt.plot(epochs, training_loss, 'g', label='Training Loss')
