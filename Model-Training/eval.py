@@ -10,8 +10,10 @@ import pandas as pd
 import numpy as np
 import ast
 import os
-print(os.getpwd())
-exit(1)
+
+#Navigating into the try1 folder
+os.chdir(PATHS.TRY1)
+
 #Initialising the generators - test generator is also included
 train_gen = ImageDataGenerator(preprocessing_function=preprocess_input).flow_from_directory(PATHS.TRAIN, target_size=(640,480), batch_size=32)
 valid_gen = ImageDataGenerator(preprocessing_function=preprocess_input).flow_from_directory(PATHS.VALID, target_size=(640,480), batch_size=32)
@@ -62,6 +64,7 @@ plt.title('Loss Curves')
 plt.xlabel('Epochs')
 plt.ylabel('Loss')
 plt.legend()
+plt.savefig('try1-loss-curve.png')
 plt.show()
 
 #Plotting the Accuracy Curves
@@ -71,6 +74,7 @@ plt.title('Accuracy Curves')
 plt.xlabel('Epochs')
 plt.ylabel('Accuracy')
 plt.legend()
+plt.savefig('try1-accuracy-curve.png')
 plt.show()
 
 
