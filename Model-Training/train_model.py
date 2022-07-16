@@ -62,7 +62,7 @@ model.summary()
 print(os.getcwd())
 
 #Navigating to the correct directory
-os.chdir('/Users/sankeerthana/Documents/GitHub/Sign-Language-Recognition/Model-Training/try1-overfitting')
+os.chdir('/Users/sankeerthana/Documents/GitHub/Sign-Language-Recognition/Model-Training/try2-dropout/value-0.2')
 
 #COMPILING AND FITTING THE MODEL
 epochs = 20 
@@ -76,9 +76,14 @@ check_point = ModelCheckpoint(filepath='weights-improvement-{epoch:02d}-{val_cat
 history = model.fit(train_gen, validation_data=valid_gen, epochs=epochs, callbacks=check_point)
 
 #saving the model
-model.save('mobilenetv2_sign_lang.h5')
+model.save('mobilenetv2_0.2_value.h5')
 
 #saving the history variable into a text file
 f = open("training_history.txt","w")
 f.write(str(history.history))
 f.close()
+
+#Saving the model summary - to keep track of the dropout layers
+g = open('model_summary.txt', 'w')
+g.write(str(model.summary(print_fn=lambda x: f.write(x + '\n'))))
+g.close()
