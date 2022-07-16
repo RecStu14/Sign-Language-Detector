@@ -4,7 +4,7 @@
 #Importing the libraries
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input, MobileNetV2
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
+from tensorflow.keras.layers import Dense, GlobalAveragePooling2D, Dropout
 from tensorflow.keras.optimizers import Adam
 from keras.callbacks import ModelCheckpoint
 from tensorflow.keras import Input
@@ -42,6 +42,7 @@ base_model = MobileNetV2(weights='imagenet', include_top=False, input_tensor=inp
 #Classifier
 x = base_model.output 
 x = GlobalAveragePooling2D()(x)
+x = Dropout(0.2)(x)
 x = Dense(512, activation='relu')(x)
 x = Dense(256, activation='relu')(x)
 x = Dense(128, activation='relu')(x)
