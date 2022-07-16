@@ -42,9 +42,11 @@ base_model = MobileNetV2(weights='imagenet', include_top=False, input_tensor=inp
 #Classifier
 x = base_model.output 
 x = GlobalAveragePooling2D()(x)
-x = Dropout(0.2)(x)
+x = Dropout(0.5)(x)
 x = Dense(512, activation='relu')(x)
+x = Dropout(0.5)(x)
 x = Dense(256, activation='relu')(x)
+x = Dropout(0.5)(x)
 x = Dense(128, activation='relu')(x)
 preds = Dense(26, activation='softmax')(x) # has 26 nodes for 26 classes
 
@@ -62,7 +64,7 @@ model.summary()
 print(os.getcwd())
 
 #Navigating to the correct directory
-os.chdir('/Users/sankeerthana/Documents/GitHub/Sign-Language-Recognition/Model-Training/try2-dropout/value-0.2')
+os.chdir('/Users/sankeerthana/Documents/GitHub/Sign-Language-Recognition/Model-Training/try2-dropout/value-0.5')
 
 #COMPILING AND FITTING THE MODEL
 epochs = 20 
@@ -76,7 +78,7 @@ check_point = ModelCheckpoint(filepath='weights-improvement-{epoch:02d}-{val_cat
 history = model.fit(train_gen, validation_data=valid_gen, epochs=epochs, callbacks=check_point)
 
 #saving the model
-model.save('mobilenetv2_0.2_value.h5')
+model.save('mobilenetv2_0.5_value.h5')
 
 #saving the history variable into a text file
 f = open("training_history.txt","w")
@@ -85,5 +87,5 @@ f.close()
 
 #Saving the model summary - to keep track of the dropout layers
 g = open('model_summary.txt', 'w')
-g.write(str(model.summary(print_fn=lambda x: f.write(x + '\n'))))
+g.write(str(model.summary()))
 g.close()
