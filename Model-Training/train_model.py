@@ -13,7 +13,6 @@ import PATHS as PATHS
 import json
 import os
 
-
 #LOADING THE DATA
 #Initialising the Generators
 train_gen = ImageDataGenerator(preprocessing_function=preprocess_input).flow_from_directory(PATHS.TRAIN, target_size=(640,480), batch_size=32)

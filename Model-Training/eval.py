@@ -12,7 +12,7 @@ import ast
 import os
 
 #Navigating into the try1 folder
-os.chdir(PATHS.TRY2_VAL_02)
+os.chdir(PATHS.TRY2_VAL_05)
 
 #Initialising the generators - test generator is also included
 train_gen = ImageDataGenerator(preprocessing_function=preprocess_input).flow_from_directory(PATHS.TRAIN, target_size=(640,480), batch_size=32)
@@ -25,7 +25,7 @@ valid_labels = valid_gen.classes
 test_labels = test_gen.classes
 
 #Loading the saved model
-model = load_model('/Users/sankeerthana/Documents/GitHub/Sign-Language-Recognition/Model-Training/try2-dropout/value-0.5/mobilenetv2_0.5_value.h5')
+model = load_model('/Users/sankeerthana/Documents/GitHub/Sign-Language-Recognition/Model-Training/try2-dropout/value-0.5/weights-improvement-08-0.181.h5')
 
 #Getting the Score
 score = model.evaluate(test_gen)
